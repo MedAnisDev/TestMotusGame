@@ -30,7 +30,6 @@ public class TestMotus {
     }
 
     public static void addValidWord(Scanner scanner, WordList dictionary) {
-
         String wordToAdd;
 
         do {
