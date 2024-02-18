@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="JeuMotus:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/JeuMotus_jar</output-path>
+    <root id="archive" name="JeuMotus.jar">
+      <element id="module-output" name="JeuMotus" />
+    </root>
+  </artifact>
+</component>
