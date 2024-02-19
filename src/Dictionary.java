@@ -1,15 +1,14 @@
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class WordList {
-
+public class Dictionary {
     private static int lengthWord = 0;
     private final ArrayList<String> dictionary;
     private int nbWords;
 
     //Constructor
-    public WordList(int lengthWord, int nbWords, ArrayList<String> words) {
-        WordList.lengthWord = lengthWord;
+    public Dictionary(int lengthWord, int nbWords, ArrayList<String> words) {
+        Dictionary.lengthWord = lengthWord;
         this.nbWords = nbWords;
         this.dictionary = words;
     }
@@ -72,6 +71,9 @@ public class WordList {
 
     public static int getLengthWord() {
         return lengthWord;
+    }
+    public ArrayList<String> getDictionary(){
+        return this.dictionary ;
     }
 }
 

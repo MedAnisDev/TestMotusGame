@@ -20,23 +20,22 @@ public class Game {
         this.bestWords = new HashMap<>();
     }
 
-
-    public static void decrementTrials() {
-        Game.nbRemainingAttempts--;
+    private String chooseRandomWord(ArrayList<String> words) {
+        Random random = new Random();
+        return words.get(random.nextInt(words.size()));
     }
 
     public String generateInitialValue(int lengthWord) {
         return "*".repeat(lengthWord);
     }
 
-    private String chooseRandomWord(ArrayList<String> words) {
-        Random random = new Random();
-        return words.get(random.nextInt(words.size()));
+    public static void decrementTrials() {
+        Game.nbRemainingAttempts--;
     }
 
     public static Boolean isValid(String motPropose) {
 
-        return motPropose.length() == WordList.getLengthWord() || motPropose.matches("[a-zA-Z]+");
+        return motPropose.length() == Dictionary.getLengthWord() && motPropose.matches("[a-zA-Z]+");
     }
 
 
@@ -106,8 +105,6 @@ public class Game {
         return maxScoredString;
     }
 
-
-
     public int getNbRemainingAttempts() {
         return nbRemainingAttempts;
     }
@@ -123,8 +120,5 @@ public class Game {
     public int getNbInitialAttempts() {
         return nbInitialAttempts;
     }
-
-
-
 }
 
