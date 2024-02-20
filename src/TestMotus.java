@@ -23,7 +23,7 @@ public class TestMotus {
         } else if (action.equals("game")) {
             Scanner scanner = new Scanner(System.in);
             ArrayList<String> words = loadWordsFromFile(lengthWord);
-            startGame(scanner, lengthWord , words);
+            startGame(scanner, lengthWord, words);
             scanner.close();
         } else {
             System.out.println("Action not recognized.");
@@ -67,8 +67,8 @@ public class TestMotus {
                     break;
 
                 case 5:
-                    ArrayList <String> wordsAfterConfig= dictionary.getDictionary();
-                    startGame(scanner, lengthWord ,wordsAfterConfig);
+                    ArrayList<String> wordsAfterConfig = dictionary.getDictionary();
+                    startGame(scanner, lengthWord, wordsAfterConfig);
                 case 6:
                     return;
                 default:
@@ -153,8 +153,8 @@ public class TestMotus {
             nbAttempts = scanner.nextInt();
             scanner.nextLine();
 
+            Dictionary.setLengthWord(lengthWord) ;
             Game game = new Game(nbAttempts, words, lengthWord);
-
             playGame(scanner, game, words);
 
         } catch (Exception e) {
@@ -164,28 +164,33 @@ public class TestMotus {
 
     private static void playGame(Scanner scanner, Game game, ArrayList<String> words) {
 
+        System.out.println("your initial found word  : "+game.getFoundWord());
+
         while (isGameCondition(game)) {
 
             System.out.println("your chosen dictionary is = " + words);
-
             String proposedWord = getProposedWordFromUser(scanner, game);
-
-            System.out.println("your foundWord : " + game.getBestWord());
 
             if (game.testWord(proposedWord)) {
                 int successAttempt = calcSuccessAttempt(game);
                 System.out.println("Well done ! You found the hidden word { " + game.getHiddenWord() + " } at the test number " + successAttempt);
                 break;
             } else {
+                System.out.println("your new found word : "+game.buildFoundWord(proposedWord));
+                System.out.println("your best foundWord : " + game.getBestWord(Dictionary.getLengthWord()));
                 System.out.println("Incorrect word.");
                 System.out.println("hidden word : " + game.getHiddenWord());
                 Game.decrementTrials();
             }
         }
 
-        if (!game.getFoundWord().equals(game.getHiddenWord())) {
+        if (!isWordFound(game)) {
             System.out.println("Sorry, you have exhausted all attempts. The word was : " + game.getHiddenWord());
         }
+    }
+
+    public static boolean isWordFound(Game game){
+        return game.getFoundWord().equals(game.getHiddenWord()) ;
     }
 
     public static boolean isGameCondition(Game game) {

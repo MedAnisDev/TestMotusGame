@@ -13,9 +13,6 @@ public class Dictionary {
         this.dictionary = words;
     }
 
-
-    //Methods
-
     public ArrayList<String> printDictionary() {
         return dictionary;
     }
@@ -38,7 +35,6 @@ public class Dictionary {
         } else {
             System.out.println("The word does not fit the dictionary size.");
         }
-
     }
 
     public void deleteWord(String wordToDelete) {
@@ -72,8 +68,13 @@ public class Dictionary {
     public static int getLengthWord() {
         return lengthWord;
     }
-    public ArrayList<String> getDictionary(){
-        return this.dictionary ;
+
+    public static void setLengthWord(int lengthWord) {
+        Dictionary.lengthWord = lengthWord;
+    }
+
+    public ArrayList<String> getDictionary() {
+        return this.dictionary;
     }
 }
 
