@@ -50,12 +50,7 @@ public class Game {
     }
 
     public Boolean checkFoundWord(String foundWordTest) {
-
-        if (hiddenWord.equals(foundWordTest)) {
-            System.out.println("your found Word : " + foundWord);
-            return true;
-        }
-        return false;
+        return hiddenWord.equals(foundWordTest) ; 
     }
 
     private int calculateAlphaInString(final String alphaString) {
